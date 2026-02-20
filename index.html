@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metro Tech Works</title>
+    <!-- Google Fonts for tech-style examples -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@400;700&family=IBM+Plex+Mono&family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="dropdown">
+            <button class="dropbtn">
+                <span class="hamburger">☰</span>
+                <span class="label">Menu</span>
+            </button>
+            <div class="dropdown-content">
+                <a href="#services"><span style="margin-right:8px;">🛠️</span>Services & Pricing</a>
+                <a href="#our-mission"><span style="margin-right:8px;">🎯</span>Our Mission</a>
+                <a href="#why-choose-us"><span style="margin-right:8px;">🌟</span>Why Choose Us</a>
+                <a href="#faq"><span style="margin-right:8px;">❓</span>FAQ</a>
+                <a href="#contact"><span style="margin-right:8px;">📞</span>Contact</a>
+            </div>
+        </div>
+        <h1>Metro Tech Works</h1>
+        <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 8px;">
+            <button id="booknow-btn" onclick="alert('Booking coming soon!');" style="background: #4a90e2; color: #fff; border: none; border-radius: 6px; padding: 8px 14px; font-size: 1em; cursor: pointer; font-family: 'Exo 2', sans-serif; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(81,168,250,0.10);">Book Now</button>
+            <button id="newsletter-btn" onclick="document.getElementById('newsletter-modal').style.display='block'" style="background: #81a8fa; color: #fff; border: none; border-radius: 6px; padding: 8px 14px; font-size: 1em; cursor: pointer; font-family: 'Exo 2', sans-serif; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(81,168,250,0.10);">Newsletter</button>
+        </div>
+
+        <div id="newsletter-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.45); z-index:1000; align-items:center; justify-content:center;">
+            <div style="background:#fff; border-radius:10px; max-width:350px; margin:80px auto; padding:32px 24px 20px 24px; box-shadow:0 4px 24px rgba(81,168,250,0.18); position:relative;">
+                <button onclick="document.getElementById('newsletter-modal').style.display='none'" style="position:absolute; top:10px; right:12px; background:none; border:none; font-size:1.3em; color:#888; cursor:pointer;">&times;</button>
+                <form onsubmit="alert('Thank you for signing up!'); document.getElementById('newsletter-modal').style.display='none'; return false;" style="display:flex; flex-direction:column; gap:12px; align-items:center;">
+                    <label for="newsletter-email" style="font-size:1.1em; color:#222;">Sign up for our newsletter</label>
+                    <input id="newsletter-email" name="email" type="email" placeholder="Enter your email" required style="padding:8px 12px; border:1px solid #bcd6f7; border-radius:5px; font-size:1em; width:100%; max-width:220px;">
+                    <button type="submit" style="background:#81a8fa; color:#fff; border:none; border-radius:5px; padding:8px 20px; font-size:1em; cursor:pointer; letter-spacing:1px;">Subscribe</button>
+                    <div style="font-size:0.95em; color:#666; margin-top:2px;">Receive exclusive promotions and updates</div>
+                </form>
+            </div>
+        </div>
+
+        <section id="hero" style="max-width: 900px; margin: 48px auto 0 auto; padding: 48px 24px 32px 24px; background: #eaf4ff; border-radius: 16px; box-shadow: 0 4px 24px rgba(81,168,250,0.10); font-family: 'Exo 2', sans-serif; text-align: center;">
+            <h1 style="font-size: 2.4em; color: #1a3a6b; margin-bottom: 0; letter-spacing: 2px; font-family: 'Exo 2', sans-serif;">
+                <span style="font-size: 1.15em; color: #17407b; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 10px;">Tech Support For Home & Small Businesses.</span>
+                Fast <span style="color:#fbbf24;">&#9733;</span> Friendly <span style="color:#fbbf24;">&#9733;</span> Reliable
+            </h1>
+            <div style="font-size: 1.25em; color: #333; margin-bottom: 28px;">On-site or Remote &bull; North NJ/NYC &bull; Same Day Options Available</div>
+            <div style="display: flex; justify-content: center; gap: 18px; margin-bottom: 18px; flex-wrap: wrap;">
+                <button onclick="alert('Booking coming soon!');" style="background: #4a90e2; color: #fff; border: none; border-radius: 6px; padding: 14px 32px; font-size: 1.1em; cursor: pointer; font-family: 'Exo 2', sans-serif; letter-spacing: 1px; font-weight: 600; box-shadow: 0 2px 8px rgba(81,168,250,0.10);">Book a Service</button>
+                <a href="tel:16465041617" style="background: #81a8fa; color: #fff; border: none; border-radius: 6px; padding: 14px 32px; font-size: 1.1em; cursor: pointer; font-family: 'Exo 2', sans-serif; letter-spacing: 1px; font-weight: 600; box-shadow: 0 2px 8px rgba(81,168,250,0.10); text-decoration: none; display: inline-block;">Call/Text Now</a>
+            </div>
+            <div style="font-size: 1.05em; color: #4a90e2; margin-top: 8px; letter-spacing: 1px;">No waiting. No runaround. Real techs.</div>
+        </section>
+        </header>
+
+        <section id="services" style="max-width: 1200px; margin: 32px auto 0 auto; padding: 32px 24px 32px 24px; font-family: 'Exo 2', sans-serif;">
+            <h2 style="color: #222; font-size: 2em; margin-bottom: 28px; margin-top: -18px; letter-spacing: 2px; text-align:center;">Our Services</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+                <div style="background:#f7faff; border-radius:12px; box-shadow:0 2px 12px rgba(81,168,250,0.08); padding:28px 24px 22px 24px; width:300px; min-width:240px; max-width:100%; margin-bottom:12px;">
+                    <h3 style="color:#1a3a6b; margin-bottom:10px; font-size:1.25em;">Home Tech Support</h3>
+                    <ul style="color:#333; font-size:1em; margin-bottom:12px; padding-left:18px;">
+                        <li>Troubleshoot slow or crashing PCs</li>
+                        <li>Wi-Fi & printer setup/fixes</li>
+                        <li>Device setup & tune-ups</li>
+                    </ul>
+                    <div style="color:#4a90e2; font-weight:600;">Starting at $79</div>
+                </div>
+                <div style="background:#f7faff; border-radius:12px; box-shadow:0 2px 12px rgba(81,168,250,0.08); padding:28px 24px 22px 24px; width:300px; min-width:240px; max-width:100%; margin-bottom:12px;">
+                    <h3 style="color:#1a3a6b; margin-bottom:10px; font-size:1.25em;">Business Support</h3>
+                    <ul style="color:#333; font-size:1em; margin-bottom:12px; padding-left:18px;">
+                        <li>Workstation & email setup</li>
+                        <li>Data backup & recovery</li>
+                        <li>Security & compliance</li>
+                    </ul>
+                    <div style="color:#4a90e2; font-weight:600;">Free estimate</div>
+                </div>
+                <div style="background:#f7faff; border-radius:12px; box-shadow:0 2px 12px rgba(81,168,250,0.08); padding:28px 24px 22px 24px; width:300px; min-width:240px; max-width:100%; margin-bottom:12px;">
+                    <h3 style="color:#1a3a6b; margin-bottom:10px; font-size:1.25em;">Network & Wi-Fi</h3>
+                    <ul style="color:#333; font-size:1em; margin-bottom:12px; padding-left:18px;">
+                        <li>Router & mesh setup</li>
+                        <li>Fix dead zones</li>
+                        <li>Network troubleshooting</li>
+                    </ul>
+                    <div style="color:#4a90e2; font-weight:600;">Starting at $99</div>
+                </div>
+                <div style="background:#f7faff; border-radius:12px; box-shadow:0 2px 12px rgba(81,168,250,0.08); padding:28px 24px 22px 24px; width:300px; min-width:240px; max-width:100%; margin-bottom:12px;">
+                    <h3 style="color:#1a3a6b; margin-bottom:10px; font-size:1.25em;">Security & Backup</h3>
+                    <ul style="color:#333; font-size:1em; margin-bottom:12px; padding-left:18px;">
+                        <li>Malware & virus cleanup</li>
+                        <li>Backup setup & testing</li>
+                        <li>Security hardening</li>
+                    </ul>
+                    <div style="color:#4a90e2; font-weight:600;">Starting at $89</div>
+                </div>
+                <div style="background:#f7faff; border-radius:12px; box-shadow:0 2px 12px rgba(81,168,250,0.08); padding:28px 24px 22px 24px; width:300px; min-width:240px; max-width:100%; margin-bottom:12px;">
+                    <h3 style="color:#1a3a6b; margin-bottom:10px; font-size:1.25em;">New Device Setup</h3>
+                    <ul style="color:#333; font-size:1em; margin-bottom:12px; padding-left:18px;">
+                        <li>PC, Mac, iPhone setup</li>
+                        <li>Data transfer & migration</li>
+                        <li>Personalized configuration</li>
+                    </ul>
+                    <div style="color:#4a90e2; font-weight:600;">Starting at $69</div>
+                </div>
+                <div style="background:#f7faff; border-radius:12px; box-shadow:0 2px 12px rgba(81,168,250,0.08); padding:28px 24px 22px 24px; width:300px; min-width:240px; max-width:100%; margin-bottom:12px;">
+                    <h3 style="color:#1a3a6b; margin-bottom:10px; font-size:1.25em;">Smart Home</h3>
+                    <ul style="color:#333; font-size:1em; margin-bottom:12px; padding-left:18px;">
+                        <li>Camera & doorbell install</li>
+                        <li>Streaming device setup</li>
+                        <li>Smart home troubleshooting</li>
+                    </ul>
+                    <div style="color:#4a90e2; font-weight:600;">Starting at $59</div>
+                </div>
+            </div>
+        </section>
+            <a id="our-mission"></a>
+            <h2 style="color: #222; font-size: 2em; margin-bottom: 18px; letter-spacing: 2px; text-align:center; font-family: 'Exo 2', sans-serif;">Our Mission</h2>
+                <p style="font-size: 1.18em; color: #333; margin-bottom: 0; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; font-family: 'Exo 2', sans-serif;">
+                    Our mission is to make technology simple, secure, and stress-free for the people and businesses we serve.<br>
+                    At Metro Tech Works, we believe technology should work for you — not against you. Whether you’re dealing with a slow computer, network issues, security concerns, or setting up new devices, we provide clear communication, practical solutions, and dependable support you can trust.<br>
+                    We don’t just fix problems. We build long-term technology confidence through honest guidance, responsive service, and a commitment to doing the job right the first time.<br>
+                    Metro Tech Works exists to be the trusted technology partner our community can rely on.
+                </p>
+                <h3 style="color: #1a3a6b; margin-top: 28px; margin-bottom: 12px; font-size: 1.25em; text-align:center; font-family: 'Exo 2', sans-serif;">Our Core Values</h3>
+                <ul class="core-values-list" style="color: #333; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; font-family: 'Exo 2', sans-serif; padding-left: 0; list-style-type: none;">
+                    <li><span style="font-size:1.5em; margin-right:8px;">🤝</span><strong>Integrity First</strong><br>We give honest recommendations and transparent pricing — no unnecessary services, no pressure tactics, and no hidden surprises.</li>
+                    <li><span style="font-size:1.5em; margin-right:8px;">💬</span><strong>Clear Communication</strong><br>We explain issues in plain language, not technical jargon, so you always understand what’s happening and why.</li>
+                    <li><span style="font-size:1.5em; margin-right:8px;">🎧</span><strong>Reliable Support</strong><br>When you reach out, you’re speaking directly with a real technician who stays with your issue until it’s fully resolved.</li>
+                    <li><span style="font-size:1.5em; margin-right:8px;">🔒</span><strong>Security & Privacy Focused</strong><br>Your data matters. We follow best practices to protect your devices, networks, and sensitive information.</li>
+                    <li style="grid-column: span 2; text-align:center;"><span style="font-size:1.5em; margin-right:8px;">🏢</span><strong>Community Commitment</strong><br>We proudly serve our local metro community with the same care and attention we’d give our own family’s technology.</li>
+                </ul>
+        </section>
+
+        <section id="why-choose-us" style="max-width: 700px; margin: 40px auto 0 auto; padding: 56px 24px 32px 24px; background: #f7faff; border-radius: 12px; box-shadow: 0 2px 12px rgba(81,168,250,0.08); font-family: 'Exo 2', sans-serif;">
+            <h2 style="color: #222; font-size: 2em; margin-bottom: 18px; letter-spacing: 2px; text-align: center; margin-top: -24px;">Why Choose Us</h2>
+            <ul style="list-style-type: disc; padding-left: 24px; color: #333; font-size: 1.1em;">
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px;">
+                    <div class="why-img-container">
+                        <img src="./photos/priority.jpg" alt="Technical Know-How" class="why-img-list">
+                    </div>
+                    <div>
+                        <span style="margin-right:8px;">💻</span>Your tech, our priority
+                        <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
+                            We treat your devices and systems like they're our own. Whether it's a slow computer, network issue, security concern, or full business setup, we respond quickly, communicate clearly, and stay with the problem until it's fully resolved. No passing you around. No generic ticket system runaround. Real answers from real technicians and support when you need it most.
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px;">
+                    <div class="why-img-container">
+                        <img src="./photos/team.jpg" alt="Expert, Friendly Technicians" class="why-img-list">
+                    </div>
+                    <div>
+                        <span style="margin-right:8px;">👨‍💻</span>Expert, friendly technicians
+                        <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
+                            Our team combines real technical knowledge with clear, down-to-earth communication. We don’t overwhelm you with confusing jargon — we explain issues in plain language and make sure you understand exactly what’s happening. Professional, respectful, and easy to work with — that’s how tech support should feel.
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px;">
+                    <div class="why-img-container">
+                        <img src="./photos/scheduling.jpg" alt="Fast Response and Scheduling" class="why-img-list">
+                    </div>
+                    <div>
+                        <span style="margin-right:8px;">⚡</span>Fast response and flexible scheduling
+                        <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
+                            When something goes wrong, you shouldn’t have to wait in a support queue. We prioritize rapid response times and offer flexible appointment options — including evenings and weekends — so your day stays on track.
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px;">
+                    <div class="why-img-container">
+                        <img src="./photos/remotesupport.jpg" alt="Planning & Innovation" class="why-img-list">
+                    </div>
+                    <div>
+                        <span style="margin-right:8px;">🛠️</span>Onsite and remote support options
+                        <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
+                            We meet you where you are. From secure remote troubleshooting for quick fixes to hands-on on-site service for more complex issues, we provide flexible support designed around your needs — not ours.
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px;">
+                    <div class="why-img-container">
+                        <img src="./photos/pricing.jpg" alt="Transparent Fair Pricing" class="why-img-list">
+                    </div>
+                    <div>
+                        <span style="margin-right:8px;">💲</span>Transparent, fair pricing
+                        <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
+                            Technology support shouldn’t come with confusing invoices or unexpected add-ons. We provide clear, upfront pricing and honest recommendations, so you know exactly what you’re paying for — and why.
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px;">
+                    <div class="why-img-container">
+                        <img src="./photos/data-privacy.jpg" alt="Data Security" class="why-img-list">
+                    </div>
+                    <div>
+                        <span style="margin-right:8px;">🔒</span>Commitment to data privacy and security
+                        <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
+                            Your information is handled with the highest level of care and discretion. We use secure tools, follow best practices, and access only what is necessary to resolve your issue. Your data stays private — always.
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px;">
+                    <div class="why-img-container">
+                        <img src="./photos/ongoing.jpg" alt="Ongoing IT Support" class="why-img-list">
+                    </div>
+                    <div>
+                        <span style="margin-right:8px;">🏢</span>Ongoing IT support for businesses
+                        <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
+                            We partner with growing businesses to provide dependable, long-term IT support. Instead of waiting for problems to arise, we help maintain, monitor, and strengthen your systems — reducing downtime and improving productivity.
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px;">
+                    <div class="why-img-container">
+                        <img src="./photos/metro.jpg" alt="Local Reach" class="why-img-list">
+                    </div>
+                    <div>
+                        <span style="margin-right:8px;">📍</span>Serving a wide local area
+                        <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
+                            As a locally operated business, we’re committed to supporting our community with reliable, accessible technology services. We’re close enough to respond quickly — and invested enough to truly care about the people we serve.
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px;">
+                    <div class="why-img-container">
+                        <img src="./photos/care.jpg" alt="Customer Care" class="why-img-list">
+                    </div>
+                    <div>
+                        <span style="margin-right:8px;">🤝</span>We care about your satisfaction
+                        <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
+                            Our job isn’t finished until you feel confident in your technology. We take the time to ensure issues are fully resolved and that you understand the solution. Your experience matters to us — and we’re always here if you need follow-up support.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+
+
+    <footer style="background: #111; color: #fff; padding: 16px 0 24px 0; text-align: center; margin-top: 24px; font-family: 'Orbitron', sans-serif; letter-spacing: 2px;">
+
+        <a id="faq"></a>
+            <h2 style="margin-bottom: 16px; font-size: 2em; letter-spacing: 4px;">Frequently Asked Questions</h2>
+            <div style="position: fixed; bottom: 0; left: 0; width: 100vw; background: #111; color: #fff; text-align: center; font-size: 0.85em; padding: 8px 0; z-index: 9999; font-family: 'Orbitron', sans-serif; letter-spacing: 2px;">
+                &copy; 2026 Metro Tech Works
+            </div>
+            <div style="text-align:left; max-width:600px; margin:0 auto 32px auto;">
+                <ul style="list-style-type: none; padding: 0;">
+                    <li style="margin-bottom: 16px;"><strong>What services do we provide?</strong><br><span style="color:#81a8fa;">We provide reliable tech support for homes and small businesses. Our services include computer repair, virus and malware removal, Wi-Fi and network setup/connectivity issues, printer troubleshooting, system optimization, data recovery and backup solutions, new device setup, and PC upgrades.</span></li>
+                    <li style="margin-bottom: 16px;"><strong>Who do we serve?</strong><br><span style="color:#81a8fa;">We serve everyday people and growing local businesses who are tired of fighting with their technology. If it connects to Wi-Fi, powers on, or frustrates you we handle it.</span></li>
+                    <li style="margin-bottom: 16px;"><strong>Do we offer onsite and remote support?</strong><br><span style="color:#81a8fa;">Yes, we offer both on-site and remote support depending on your needs.</span></li>
+                    <li style="margin-bottom: 16px;"><strong>How quickly can I schedule service?</strong><br><span style="color:#81a8fa;">Most services scheduled within 24-48 hours, depending on availability. If urgent let us know -- we move fast when it matters most.</span></li>
+                    <li style="margin-bottom: 16px;"><strong>How does pricing work?</strong><br><span style="color:#81a8fa;">Pricing depends on the type and complexity of the issue. We offer transparent, upfront estimates before any work begins -- no hidden fees and no surprise charges.</span></li>
+                    <li style="margin-bottom: 16px;"><strong>Do you provide ongoing IT support for businesses?</strong><br><span style="color:#81a8fa;">Yes. We offer support for businesses that want dependable technology without the overhead of an in-house IT team.</span></li>
+                    <li style="margin-bottom: 16px;"><strong>Is my data secure and kept private?</strong><br><span style="color:#81a8fa;">Yes, we treat your data with the same care we'd expect for our own. We access only what's necessary to fix the problem and keep all client information strictly confidential.</span></li>
+                    <li style="margin-bottom: 16px;"><strong>What areas do you service?</strong><br><span style="color:#81a8fa;">We provide on-site service throughout the metro area and surrounding neighborhoods. Remote support is available anywhere in the U.S.</span></li>
+                    <li style="margin-bottom: 16px;"><strong>What makes us different from other providers?</strong><br><span style="color:#81a8fa;">We don't hide behind tech jargon or push unnecessary upgrades. We show up quickly, diagnose the issue properly, explain it clearly, and fix it the right way. Simple, honest, dependable tech support -- that's the difference.</span></li>
+                </ul>
+            </div>
+        <a id="contact"></a>
+            <h2 style="margin-bottom: 16px; font-size: 2em; letter-spacing: 4px;">Contact Us</h2>
+            <div style="margin-bottom: 8px;">Phone: <span style="color: #81a8fa;">(646) 504-1617</span></div>
+            <div style="margin-bottom: 8px;">Email: <a href="mailto:info@metrotechworks.com" style="color: #81a8fa; text-decoration: underline;">info@metrotechworks.com</a></div>
+            <div style="margin-bottom: 8px;">Service Area: <span style="color: #81a8fa;">North Jersey, NYC Metro, Bergen, Hudson, Essex, Passaic, Union, and Nearby Counties</span></div>
+            <div style="margin-bottom: 8px;">Hours of Operation:</div>
+            <div>Mon - Fri: 8AM - 7PM EST</div>
+            <div>Sat - Sun: 9AM - 7PM EST</div>
+            <div style="margin: 12px 0 18px 0; color: #ffb347; font-weight: 600;">Emergency & same-day service available — call for fastest response!</div>
+            <form style="max-width: 420px; margin: 0 auto; background: #181d2b; border-radius: 10px; padding: 24px 18px 18px 18px; color: #fff; font-family: 'Exo 2', sans-serif; box-shadow: 0 2px 12px rgba(81,168,250,0.10);">
+                <div style="margin-bottom: 12px; font-size: 1.1em; font-weight: 600; letter-spacing: 1px;">Quick Contact Form</div>
+                <input type="text" name="name" placeholder="Your Name" required style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
+                <input type="text" name="address" placeholder="Address or Zip Code" required style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
+                <input type="text" name="issue" placeholder="Briefly describe your issue" required style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
+                <input type="text" name="preferred_time" placeholder="Preferred Time (e.g. tomorrow 2pm)" style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
+                <select name="support_type" required style="width: 100%; margin-bottom: 14px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
+                    <option value="" disabled selected>Remote or On-site?</option>
+                    <option value="remote">Remote</option>
+                    <option value="onsite">On-site</option>
+                    <option value="either">Either</option>
+                </select>
+                <button type="submit" style="background: #81a8fa; color: #fff; border: none; border-radius: 5px; padding: 10px 24px; font-size: 1em; cursor: pointer; letter-spacing: 1px;">Send Request</button>
+            </form>
+        <div style="margin-top: 32px; border-top: 1px solid #222; padding-top: 18px; font-size: 1em; color: #bfc8e6;">
+            <div style="margin-bottom: 6px;">&copy; 2026 Metro Tech Works. All rights reserved.</div>
+            <div style="margin-bottom: 6px;">Service Area: North Jersey, NYC Metro, Bergen, Hudson, Essex, Passaic, Union, and Nearby Counties</div>
+            <div style="margin-bottom: 6px;">Data privacy: We never sell your data. Your information is used only to provide service and updates you request.</div>
+            <div style="font-size: 0.95em; color: #8fa1c7;">For newsletter subscribers: We respect your privacy and will only use your email to send you updates and promotions from Metro Tech Works.</div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
