@@ -7,6 +7,8 @@
     <!-- Google Fonts for tech-style examples -->
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@400;700&family=IBM+Plex+Mono&family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Begin Brevo Form -->
     <style>  @font-face {    font-display: block;    font-family: Roboto;    src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")  }  @font-face {    font-display: fallback;    font-family: Roboto;    font-weight: 600;    src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")  }  @font-face {    font-display: fallback;    font-family: Roboto;    font-weight: 700;    src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")  }  #sib-container input:-ms-input-placeholder {    text-align: left;    font-family: Helvetica, sans-serif;    color: #c0ccda;  }  #sib-container input::placeholder {    text-align: left;    font-family: Helvetica, sans-serif;    color: #c0ccda;  }  #sib-container textarea::placeholder {    text-align: left;    font-family: Helvetica, sans-serif;    color: #c0ccda;  }  #sib-container a {    text-decoration: underline;    color: #2BB2FC;  }</style>
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
@@ -322,25 +324,18 @@
             <div>Mon - Fri: 8AM - 7PM EST</div>
             <div>Sat - Sun: 9AM - 7PM EST</div>
             <div style="margin: 12px 0 18px 0; color: #ffb347; font-weight: 600;">Emergency & same-day service available — call for fastest response!</div>
-            <form style="max-width: 420px; margin: 0 auto; background: #181d2b; border-radius: 10px; padding: 24px 18px 18px 18px; color: #fff; font-family: 'Exo 2', sans-serif; box-shadow: 0 2px 12px rgba(81,168,250,0.10);">
-                <div style="margin-bottom: 12px; font-size: 1.1em; font-weight: 600; letter-spacing: 1px;">Quick Contact Form</div>
-                <input type="text" name="name" placeholder="Your Name" required style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
-                <input type="text" name="address" placeholder="Address or Zip Code" required style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
-                <input type="text" name="issue" placeholder="Briefly describe your issue" required style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
-                <input type="text" name="preferred_time" placeholder="Preferred Time (e.g. tomorrow 2pm)" style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
-                <select name="support_type" required style="width: 100%; margin-bottom: 14px; padding: 8px; border-radius: 5px; border: 1px solid #bcd6f7; font-size: 1em;">
-                    <option value="" disabled selected>Remote or On-site?</option>
-                    <option value="remote">Remote</option>
-                    <option value="onsite">On-site</option>
-                    <option value="either">Either</option>
-                </select>
-        <button type="submit"
-          style="background: #81a8fa; color: #fff; border: none; border-radius: 5px; padding: 10px 24px; font-size: 1em; cursor: pointer; letter-spacing: 1px; transition: background 0.3s ease;"
-          onmouseover="this.style.background='#4a90e2';"
-          onmouseout="this.style.background='#81a8fa';">
-          Send Request
-        </button>
-            </form>
+                        <div style="margin-top: 40px; margin-bottom: 32px; padding: 32px 0 24px 0; background: #181d2b; border-radius: 12px; box-shadow: 0 2px 12px rgba(81,168,250,0.10); text-align: center;">
+                            <h3 style="color: #ffb347; font-size: 1.5em; margin-bottom: 12px; letter-spacing: 2px;">Stay Connected!</h3>
+                            <p style="color: #bfc8e6; font-size: 1.1em; margin-bottom: 18px;">@metrotechworks on all socials<br>Follow us for updates, tips, and support!</p>
+                            <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+                                <a href="https://facebook.com/metrotechworks" target="_blank" style="color: #4267B2; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="Facebook"><i class="fab fa-facebook-square"></i> Facebook</a>
+                                <a href="https://instagram.com/metrotechworks" target="_blank" style="color: #E1306C; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                                <a href="https://twitter.com/metrotechworks" target="_blank" style="color: #1DA1F2; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="Twitter/X"><i class="fab fa-x-twitter"></i> Twitter/X</a>
+                                <a href="https://linkedin.com/company/metrotechworks" target="_blank" style="color: #0077B5; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="https://tiktok.com/@metrotechworks" target="_blank" style="color: #010101; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="TikTok"><i class="fab fa-tiktok"></i> TikTok</a>
+                            </div>
+                            <div style="margin-top: 18px; color: #8fa1c7; font-size: 1em;">Message us anytime with questions, tech issues, or partnership inquiries.</div>
+                        </div>
         <div style="margin-top: 32px; border-top: 1px solid #222; padding-top: 18px; font-size: 1em; color: #bfc8e6;">
             <div style="margin-bottom: 6px;">&copy; 2026 Metro Tech Works. All rights reserved.</div>
             <div style="margin-bottom: 6px;">Service Area: North Jersey, NYC Metro, Bergen, Hudson, Essex, Passaic, Union, and Nearby Counties</div>
