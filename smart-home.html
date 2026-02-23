@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Home | Metro Tech Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e8eaf0;
+            font-family: 'Exo 2', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: #000;
+            border-bottom: 1px solid #1a1a2e;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+            position: sticky;
+            top: 2px;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 6px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-logo span { color: #3b82f6; }
+
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+
+        .nav-links a {
+            color: #aab4cc;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Exo 2', sans-serif;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #60a5fa; }
+
+        .nav-cta {
+            background: #3b82f6;
+            color: #fff !important;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: #2563eb !important; color: #fff !important; }
+
+        /* ── HERO ── */
+        .hero {
+            background: #000;
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #1c1c2e;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,0.13) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .breadcrumb {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .breadcrumb a { color: #3b82f6; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: #444; margin: 0 8px; }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(59,130,246,0.12);
+            border: 1px solid rgba(59,130,246,0.35);
+            color: #60a5fa;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span { color: #3b82f6; }
+
+        .hero p {
+            max-width: 580px;
+            margin: 0 auto 32px;
+            color: #8899bb;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+
+        .btn-secondary {
+            background: transparent;
+            color: #60a5fa;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            border: 1px solid #3b82f6;
+            transition: background 0.2s, color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover { background: rgba(59,130,246,0.12); }
+
+        /* ── PRICING STRIP ── */
+        .pricing-strip {
+            background: linear-gradient(90deg, #0f1a2e, #111827, #0f1a2e);
+            border-top: 1px solid #1e3a5f;
+            border-bottom: 1px solid #1e3a5f;
+            padding: 18px 24px;
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: #60a5fa;
+            letter-spacing: 2px;
+        }
+
+        .pricing-strip strong { color: #fff; }
+
+        /* ── SERVICES SECTION ── */
+        .services-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 54px;
+        }
+
+        .section-label {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            color: #3b82f6;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            color: #7a8ba8;
+            max-width: 520px;
+            margin: 0 auto;
+            font-size: 0.97rem;
+        }
+
+        /* ── SERVICE CARDS GRID ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 22px;
+        }
+
+        .service-card {
+            background: #0f0f14;
+            border: 1px solid #1e2236;
+            border-radius: 10px;
+            padding: 28px 26px;
+            transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #2a4a7f;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(59,130,246,0.1);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #e0eaff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-desc {
+            color: #7a8ba8;
+            font-size: 0.93rem;
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+
+        .card-details {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+
+        .card-details li {
+            color: #8fa8c8;
+            font-size: 0.88rem;
+            padding: 5px 0;
+            padding-left: 16px;
+            position: relative;
+            border-bottom: 1px solid #141826;
+        }
+
+        .card-details li:last-child { border-bottom: none; }
+
+        .card-details li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: rgba(59,130,246,0.1);
+            border: 1px solid rgba(59,130,246,0.25);
+            color: #60a5fa;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-family: 'Roboto Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        /* ── FEATURED WIDE CARD ── */
+        .service-card.wide {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        @media (max-width: 700px) {
+            .service-card.wide { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+
+        /* ── PROCESS SECTION ── */
+        .process-section {
+            background: #050508;
+            border-top: 1px solid #1a1a2e;
+            border-bottom: 1px solid #1a1a2e;
+            padding: 70px 24px;
+        }
+
+        .process-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0;
+            margin-top: 48px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2563eb, transparent);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: #0f1827;
+            border: 2px solid #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #60a5fa;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-title {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            font-size: 0.92rem;
+            letter-spacing: 1px;
+            color: #c8d8f0;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 0.82rem;
+            color: #556070;
+            line-height: 1.5;
+        }
+
+        /* ── BOTTOM CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, #0a1628 0%, #0f0f1a 50%, #0a1628 100%);
+            border-top: 1px solid #1e3a5f;
+            padding: 70px 24px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p { color: #7a8ba8; margin-bottom: 32px; font-size: 1rem; }
+
+        .cta-price {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            color: #3b82f6;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .cta-contact {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 28px;
+            font-size: 0.88rem;
+            color: #556070;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .cta-contact span { color: #60a5fa; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #000;
+            border-top: 1px solid #111;
+            padding: 30px 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #444;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        footer a { color: #3b82f6; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge, .hero h1, .hero p, .hero-actions {
+            animation: fadeUp 0.6s ease both;
+        }
+        .hero h1 { animation-delay: 0.1s; }
+        .hero p { animation-delay: 0.2s; }
+        .hero-actions { animation-delay: 0.3s; }
+
+        .service-card { animation: fadeUp 0.5s ease both; }
+        .service-card:nth-child(1) { animation-delay: 0.05s; }
+        .service-card:nth-child(2) { animation-delay: 0.1s; }
+        .service-card:nth-child(3) { animation-delay: 0.15s; }
+        .service-card:nth-child(4) { animation-delay: 0.2s; }
+        .service-card:nth-child(5) { animation-delay: 0.25s; }
+        .service-card:nth-child(6) { animation-delay: 0.3s; }
+        .service-card:nth-child(7) { animation-delay: 0.35s; }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">METRO<span>TECH</span>WORKS</a>
+        <div class="nav-links">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#our-mission">Mission</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="nav-cta" target="_blank">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <p class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="index.html#services">Our Services</a>
+            <span>›</span>
+            Smart Home
+        </p>
+        <div class="hero-badge">🏡 Smart Home Services</div>
+        <h1>Smart <span>Home</span></h1>
+        <p>From cameras and doorbells to voice assistants and streaming devices, we install, configure, and troubleshoot your smart home tech — so everything works together seamlessly.</p>
+        <div class="hero-actions">
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="btn-primary" target="_blank">📅 Book a Service</a>
+            <a href="index.html#contact" class="btn-secondary">📞 Call / Text Us</a>
+        </div>
+    </header>
+
+    <!-- PRICING STRIP -->
+    <div class="pricing-strip">
+        <strong>Starting at $59</strong> &nbsp;·&nbsp; On-Site Service &nbsp;·&nbsp; North NJ / NYC Metro &nbsp;·&nbsp; Same-Day Available
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services-section">
+        <div class="section-header">
+            <div class="section-label">// What We Cover</div>
+            <h2>All Smart Home Services</h2>
+            <p>A full breakdown of every smart home service we offer — explained in plain language, no tech degree required.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <!-- WIDE: Camera & Doorbell Install -->
+            <div class="service-card wide">
+                <div>
+                    <span class="card-icon">📷</span>
+                    <div class="card-title">Camera & Doorbell Installation</div>
+                    <p class="card-desc">Security cameras and smart doorbells add real peace of mind — but only when they're set up correctly. We handle the full installation and configuration so you get reliable coverage, proper alerts, and easy access from your phone.</p>
+                    <span class="card-tag">Most Popular</span>
+                </div>
+                <div>
+                    <ul class="card-details">
+                        <li>Ring, Nest, Arlo, Blink &amp; more supported</li>
+                        <li>Indoor &amp; outdoor camera placement &amp; mounting</li>
+                        <li>Video doorbell wiring or battery setup</li>
+                        <li>App setup &amp; mobile notification configuration</li>
+                        <li>Motion zone &amp; sensitivity adjustment</li>
+                        <li>Cloud storage &amp; recording plan setup</li>
+                        <li>Wi-Fi signal check &amp; optimization at install location</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Streaming Device Setup -->
+            <div class="service-card">
+                <span class="card-icon">📺</span>
+                <div class="card-title">Streaming Device Setup</div>
+                <p class="card-desc">Whether it's a new Roku, Fire Stick, Apple TV, or Chromecast, we'll get it connected, your accounts signed in, and your favorite apps ready to go — on every TV in the house if needed.</p>
+                <ul class="card-details">
+                    <li>Roku, Fire Stick, Apple TV &amp; Chromecast setup</li>
+                    <li>Account sign-in (Netflix, Hulu, Disney+, etc.)</li>
+                    <li>App install &amp; home screen organization</li>
+                    <li>4K / HDR display settings optimization</li>
+                    <li>Wi-Fi connection &amp; signal testing</li>
+                    <li>Remote pairing &amp; universal remote setup</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Smart Speaker & Voice Assistant -->
+            <div class="service-card">
+                <span class="card-icon">🔊</span>
+                <div class="card-title">Smart Speaker & Voice Assistant Setup</div>
+                <p class="card-desc">Amazon Echo, Google Nest, or Apple HomePod — we set up your smart speakers, connect them to your other devices, and make sure your voice assistant is actually useful right out of the box.</p>
+                <ul class="card-details">
+                    <li>Amazon Echo &amp; Alexa setup &amp; configuration</li>
+                    <li>Google Nest &amp; Google Home setup</li>
+                    <li>Apple HomePod &amp; Siri configuration</li>
+                    <li>Multi-room audio grouping &amp; speaker pairing</li>
+                    <li>Smart home device linking &amp; voice commands</li>
+                    <li>Routine &amp; automation creation</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Smart Lighting -->
+            <div class="service-card">
+                <span class="card-icon">💡</span>
+                <div class="card-title">Smart Lighting Setup</div>
+                <p class="card-desc">Smart bulbs and switches are simple in theory but can be frustrating in practice. We get your smart lighting installed, connected to your app or voice assistant, and set up with schedules or automations that actually make sense for your home.</p>
+                <ul class="card-details">
+                    <li>Philips Hue, LIFX, Govee &amp; more supported</li>
+                    <li>Smart bulb &amp; smart switch installation</li>
+                    <li>App setup &amp; room/zone grouping</li>
+                    <li>Alexa, Google Home &amp; HomeKit integration</li>
+                    <li>Scheduling &amp; sunrise/sunset automations</li>
+                    <li>Color scene &amp; mood lighting configuration</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Smart Thermostat -->
+            <div class="service-card">
+                <span class="card-icon">🌡️</span>
+                <div class="card-title">Smart Thermostat Setup</div>
+                <p class="card-desc">A smart thermostat can save you money and keep your home comfortable automatically — but only if it's wired and configured correctly. We handle the install and make sure it's integrated with your smart home system.</p>
+                <ul class="card-details">
+                    <li>Nest, Ecobee &amp; Honeywell thermostat installation</li>
+                    <li>Wiring compatibility check &amp; installation</li>
+                    <li>App setup &amp; account creation</li>
+                    <li>Schedule &amp; comfort mode programming</li>
+                    <li>Alexa, Google Home &amp; HomeKit integration</li>
+                    <li>Geofencing &amp; auto-away configuration</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Smart Lock & Access -->
+            <div class="service-card">
+                <span class="card-icon">🔒</span>
+                <div class="card-title">Smart Lock & Access Setup</div>
+                <p class="card-desc">Smart locks offer keyless convenience and real security — when they're set up right. We install and configure your smart lock, create access codes, and connect it to your smart home hub or phone.</p>
+                <ul class="card-details">
+                    <li>August, Schlage, Yale &amp; other brands supported</li>
+                    <li>Physical installation &amp; alignment</li>
+                    <li>App setup &amp; user access code creation</li>
+                    <li>Auto-lock &amp; auto-unlock configuration</li>
+                    <li>Alexa, Google Home &amp; HomeKit linking</li>
+                    <li>Guest &amp; temporary access management</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Smart Home Troubleshooting -->
+            <div class="service-card">
+                <span class="card-icon">🔧</span>
+                <div class="card-title">Smart Home Troubleshooting</div>
+                <p class="card-desc">Devices dropping offline, automations not triggering, or your smart home ecosystem feeling like a mess? We diagnose and fix the issues so everything works the way it was supposed to.</p>
+                <ul class="card-details">
+                    <li>Offline device diagnosis &amp; reconnection</li>
+                    <li>Automation &amp; routine repair</li>
+                    <li>Hub &amp; bridge connectivity troubleshooting</li>
+                    <li>Wi-Fi interference &amp; signal issue fixes</li>
+                    <li>App &amp; firmware update issues</li>
+                    <li>Cross-platform integration fixes (Alexa + Google, etc.)</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+            <!-- Smart Home Ecosystem Planning -->
+            <div class="service-card">
+                <span class="card-icon">🏠</span>
+                <div class="card-title">Smart Home Ecosystem Planning</div>
+                <p class="card-desc">Not sure where to start or how to make all your devices work together? We assess your home, walk you through your options, and recommend a setup that fits your needs and budget — no overselling, no unnecessary gadgets.</p>
+                <ul class="card-details">
+                    <li>Home walkthrough &amp; needs assessment</li>
+                    <li>Platform recommendation (Alexa, Google, Apple)</li>
+                    <li>Device compatibility review</li>
+                    <li>Budget-friendly product suggestions</li>
+                    <li>Network &amp; Wi-Fi readiness check</li>
+                    <li>Phased setup plan for gradual upgrades</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="process-section">
+        <div class="process-inner">
+            <div class="section-header">
+                <div class="section-label">// The Process</div>
+                <h2>How It Works</h2>
+                <p>Simple, transparent, and stress-free from start to finish.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <div class="step-title">Book Online</div>
+                    <p class="step-desc">Schedule in minutes via our online booking or give us a call. Same-day options available.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <div class="step-title">We Assess</div>
+                    <p class="step-desc">We review your devices and home setup to plan the best installation or fix before any work begins.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <div class="step-title">You Approve</div>
+                    <p class="step-desc">We give you an upfront quote before any work begins. No surprise charges, ever.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <div class="step-title">All Connected</div>
+                    <p class="step-desc">We don't leave until every device is working, connected, and you know how to use it confidently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="section-label">// Ready to Get Started?</div>
+        <h2>Make Your Home Smarter Today</h2>
+        <p>We handle the setup so you can enjoy the convenience — without the frustration.</p>
+        <div class="cta-price">Starting at $59 · No hidden fees · Same-day options available</div>
+        <div class="hero-actions" style="margin-top: 24px;">
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="btn-primary" target="_blank">📅 Book a Service</a>
+            <a href="index.html#contact" class="btn-secondary">📞 Call / Text Us</a>
+        </div>
+        <div class="cta-contact">
+            <div>📞 <span>(646) 504-1617</span></div>
+            <div>📧 <span>info@metrotechworks.com</span></div>
+            <div>📍 <span>North NJ / NYC Metro</span></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Metro Tech Works. All rights reserved. &nbsp;|&nbsp; <a href="index.html">Back to Home</a></p>
+        <p style="margin-top:8px;">Service Area: North Jersey, NYC Metro, Bergen, Hudson, Essex, Passaic, Union, and Nearby Counties</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Device Setup | Metro Tech Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e8eaf0;
+            font-family: 'Exo 2', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: #000;
+            border-bottom: 1px solid #1a1a2e;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+            position: sticky;
+            top: 2px;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 6px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-logo span { color: #3b82f6; }
+
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+
+        .nav-links a {
+            color: #aab4cc;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Exo 2', sans-serif;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #60a5fa; }
+
+        .nav-cta {
+            background: #3b82f6;
+            color: #fff !important;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: #2563eb !important; color: #fff !important; }
+
+        /* ── HERO ── */
+        .hero {
+            background: #000;
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #1c1c2e;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,0.13) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .breadcrumb {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .breadcrumb a { color: #3b82f6; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: #444; margin: 0 8px; }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(59,130,246,0.12);
+            border: 1px solid rgba(59,130,246,0.35);
+            color: #60a5fa;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span { color: #3b82f6; }
+
+        .hero p {
+            max-width: 580px;
+            margin: 0 auto 32px;
+            color: #8899bb;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+
+        .btn-secondary {
+            background: transparent;
+            color: #60a5fa;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            border: 1px solid #3b82f6;
+            transition: background 0.2s, color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover { background: rgba(59,130,246,0.12); }
+
+        /* ── PRICING STRIP ── */
+        .pricing-strip {
+            background: linear-gradient(90deg, #0f1a2e, #111827, #0f1a2e);
+            border-top: 1px solid #1e3a5f;
+            border-bottom: 1px solid #1e3a5f;
+            padding: 18px 24px;
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: #60a5fa;
+            letter-spacing: 2px;
+        }
+
+        .pricing-strip strong { color: #fff; }
+
+        /* ── SERVICES SECTION ── */
+        .services-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 54px;
+        }
+
+        .section-label {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            color: #3b82f6;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            color: #7a8ba8;
+            max-width: 520px;
+            margin: 0 auto;
+            font-size: 0.97rem;
+        }
+
+        /* ── SERVICE CARDS GRID ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 22px;
+        }
+
+        .service-card {
+            background: #0f0f14;
+            border: 1px solid #1e2236;
+            border-radius: 10px;
+            padding: 28px 26px;
+            transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #2a4a7f;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(59,130,246,0.1);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #e0eaff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-desc {
+            color: #7a8ba8;
+            font-size: 0.93rem;
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+
+        .card-details {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+
+        .card-details li {
+            color: #8fa8c8;
+            font-size: 0.88rem;
+            padding: 5px 0;
+            padding-left: 16px;
+            position: relative;
+            border-bottom: 1px solid #141826;
+        }
+
+        .card-details li:last-child { border-bottom: none; }
+
+        .card-details li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: rgba(59,130,246,0.1);
+            border: 1px solid rgba(59,130,246,0.25);
+            color: #60a5fa;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-family: 'Roboto Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        /* ── FEATURED WIDE CARD ── */
+        .service-card.wide {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        @media (max-width: 700px) {
+            .service-card.wide { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+
+        /* ── PROCESS SECTION ── */
+        .process-section {
+            background: #050508;
+            border-top: 1px solid #1a1a2e;
+            border-bottom: 1px solid #1a1a2e;
+            padding: 70px 24px;
+        }
+
+        .process-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0;
+            margin-top: 48px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2563eb, transparent);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: #0f1827;
+            border: 2px solid #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #60a5fa;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-title {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            font-size: 0.92rem;
+            letter-spacing: 1px;
+            color: #c8d8f0;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 0.82rem;
+            color: #556070;
+            line-height: 1.5;
+        }
+
+        /* ── BOTTOM CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, #0a1628 0%, #0f0f1a 50%, #0a1628 100%);
+            border-top: 1px solid #1e3a5f;
+            padding: 70px 24px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p { color: #7a8ba8; margin-bottom: 32px; font-size: 1rem; }
+
+        .cta-price {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            color: #3b82f6;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .cta-contact {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 28px;
+            font-size: 0.88rem;
+            color: #556070;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .cta-contact span { color: #60a5fa; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #000;
+            border-top: 1px solid #111;
+            padding: 30px 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #444;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        footer a { color: #3b82f6; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge, .hero h1, .hero p, .hero-actions {
+            animation: fadeUp 0.6s ease both;
+        }
+        .hero h1 { animation-delay: 0.1s; }
+        .hero p { animation-delay: 0.2s; }
+        .hero-actions { animation-delay: 0.3s; }
+
+        .service-card { animation: fadeUp 0.5s ease both; }
+        .service-card:nth-child(1) { animation-delay: 0.05s; }
+        .service-card:nth-child(2) { animation-delay: 0.1s; }
+        .service-card:nth-child(3) { animation-delay: 0.15s; }
+        .service-card:nth-child(4) { animation-delay: 0.2s; }
+        .service-card:nth-child(5) { animation-delay: 0.25s; }
+        .service-card:nth-child(6) { animation-delay: 0.3s; }
+        .service-card:nth-child(7) { animation-delay: 0.35s; }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">METRO<span>TECH</span>WORKS</a>
+        <div class="nav-links">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#our-mission">Mission</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="nav-cta" target="_blank">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <p class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="index.html#services">Our Services</a>
+            <span>›</span>
+            New Device Setup
+        </p>
+        <div class="hero-badge">📦 Setup Services</div>
+        <h1>New Device <span>Setup</span></h1>
+        <p>Got a new PC, Mac, iPhone, or tablet? We'll get it configured exactly the way you want — accounts, apps, settings, and data all moved over — so you're up and running from day one.</p>
+        <div class="hero-actions">
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="btn-primary" target="_blank">📅 Book a Service</a>
+            <a href="index.html#contact" class="btn-secondary">📞 Call / Text Us</a>
+        </div>
+    </header>
+
+    <!-- PRICING STRIP -->
+    <div class="pricing-strip">
+        <strong>Starting at $69</strong> &nbsp;·&nbsp; On-Site &amp; Remote Options &nbsp;·&nbsp; North NJ / NYC Metro &nbsp;·&nbsp; Same-Day Available
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services-section">
+        <div class="section-header">
+            <div class="section-label">// What We Cover</div>
+            <h2>All New Device Setup Services</h2>
+            <p>Every setup service we offer — explained clearly so you know exactly what you're getting.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <!-- WIDE: PC & Mac Setup -->
+            <div class="service-card wide">
+                <div>
+                    <span class="card-icon">💻</span>
+                    <div class="card-title">PC & Mac Initial Setup</div>
+                    <p class="card-desc">A brand-new computer out of the box is rarely ready to use the way you need it. We handle the full setup process — from account creation to software installs — so everything is exactly how you want it before we leave.</p>
+                    <span class="card-tag">Most Popular</span>
+                </div>
+                <div>
+                    <ul class="card-details">
+                        <li>Out-of-box setup &amp; initial configuration</li>
+                        <li>Microsoft / Apple account creation or sign-in</li>
+                        <li>Windows &amp; macOS preference customization</li>
+                        <li>Essential software installation (browser, Office, etc.)</li>
+                        <li>Security software &amp; antivirus setup</li>
+                        <li>Windows Update / macOS update completion</li>
+                        <li>Wi-Fi, printer &amp; peripheral connection</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Data Transfer & Migration -->
+            <div class="service-card">
+                <span class="card-icon">🔄</span>
+                <div class="card-title">Data Transfer & Migration</div>
+                <p class="card-desc">Moving to a new machine doesn't mean starting over. We transfer your files, settings, and profile from your old device to your new one — safely and completely.</p>
+                <ul class="card-details">
+                    <li>Documents, photos &amp; video transfer</li>
+                    <li>Full profile &amp; desktop migration</li>
+                    <li>Browser bookmarks &amp; saved passwords</li>
+                    <li>Email accounts &amp; local mail migration</li>
+                    <li>Old PC to new PC (Windows to Windows)</li>
+                    <li>Mac to Mac or PC to Mac migration</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- iPhone & iPad Setup -->
+            <div class="service-card">
+                <span class="card-icon">📱</span>
+                <div class="card-title">iPhone & iPad Setup</div>
+                <p class="card-desc">New iPhone or iPad? We'll get it activated, signed into your Apple ID, and set up with your apps, contacts, and preferences — including restoring from your old device if needed.</p>
+                <ul class="card-details">
+                    <li>Activation &amp; Apple ID sign-in</li>
+                    <li>iCloud setup &amp; sync configuration</li>
+                    <li>App restore or fresh app install</li>
+                    <li>Contacts, calendar &amp; mail setup</li>
+                    <li>Transfer from old iPhone via iCloud or cable</li>
+                    <li>Face ID / Touch ID &amp; passcode setup</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Android Device Setup -->
+            <div class="service-card">
+                <span class="card-icon">🤖</span>
+                <div class="card-title">Android Phone & Tablet Setup</div>
+                <p class="card-desc">New Android phone or tablet in hand? We'll walk through the full setup — Google account, apps, data transfer from your old device, and everything personalized to how you use it.</p>
+                <ul class="card-details">
+                    <li>Google account setup &amp; sync</li>
+                    <li>Transfer from old Android via Google Backup or cable</li>
+                    <li>App installs &amp; home screen organization</li>
+                    <li>Contacts, calendar &amp; email configuration</li>
+                    <li>Security settings &amp; fingerprint / PIN setup</li>
+                    <li>Notification &amp; preference customization</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Personalized Configuration -->
+            <div class="service-card">
+                <span class="card-icon">🎛️</span>
+                <div class="card-title">Personalized Configuration</div>
+                <p class="card-desc">Generic out-of-box settings aren't built for you. We customize your device to match the way you actually use it — accessibility options, shortcuts, default apps, and more.</p>
+                <ul class="card-details">
+                    <li>Default app configuration (browser, email, etc.)</li>
+                    <li>Accessibility &amp; display settings</li>
+                    <li>Keyboard shortcuts &amp; trackpad preferences</li>
+                    <li>Notification management &amp; focus modes</li>
+                    <li>Dark mode, themes &amp; visual preferences</li>
+                    <li>Power &amp; sleep settings optimization</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+            <!-- Printer & Peripheral Setup -->
+            <div class="service-card">
+                <span class="card-icon">🖨️</span>
+                <div class="card-title">Printer & Peripheral Connection</div>
+                <p class="card-desc">New device means reconnecting everything from scratch. We make sure your printer, external drives, monitors, and other peripherals all talk to your new machine without a fight.</p>
+                <ul class="card-details">
+                    <li>Printer driver install &amp; wireless setup</li>
+                    <li>External monitor &amp; display configuration</li>
+                    <li>External hard drive &amp; USB hub setup</li>
+                    <li>Bluetooth devices (keyboard, mouse, headphones)</li>
+                    <li>Webcam &amp; microphone setup &amp; testing</li>
+                    <li>Multi-device peripheral sharing where applicable</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Software & App Installation -->
+            <div class="service-card">
+                <span class="card-icon">📦</span>
+                <div class="card-title">Software & App Installation</div>
+                <p class="card-desc">We install and configure all the software you need — whether it's a standard suite of everyday apps or something specific to your work or hobbies.</p>
+                <ul class="card-details">
+                    <li>Microsoft Office / 365 setup &amp; activation</li>
+                    <li>Browser setup &amp; bookmark import</li>
+                    <li>Video conferencing apps (Zoom, Teams, Meet)</li>
+                    <li>Creative &amp; productivity software</li>
+                    <li>License key activation &amp; account linking</li>
+                    <li>Removal of bloatware &amp; unnecessary preloads</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+            <!-- Account & Cloud Setup -->
+            <div class="service-card">
+                <span class="card-icon">☁️</span>
+                <div class="card-title">Account & Cloud Setup</div>
+                <p class="card-desc">Getting all your accounts signed in and syncing properly across a new device can be surprisingly tedious. We handle it all in one visit so nothing gets left behind.</p>
+                <ul class="card-details">
+                    <li>Google, Microsoft &amp; Apple account sign-in</li>
+                    <li>Cloud storage sync (Drive, OneDrive, iCloud, Dropbox)</li>
+                    <li>Email account setup across all clients</li>
+                    <li>Password manager setup &amp; import</li>
+                    <li>Two-factor authentication (2FA) configuration</li>
+                    <li>Calendar &amp; contacts sync across devices</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="process-section">
+        <div class="process-inner">
+            <div class="section-header">
+                <div class="section-label">// The Process</div>
+                <h2>How It Works</h2>
+                <p>Simple, transparent, and stress-free from start to finish.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <div class="step-title">Book Online</div>
+                    <p class="step-desc">Schedule in minutes via our online booking or give us a call. Same-day options available.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <div class="step-title">We Plan It</div>
+                    <p class="step-desc">We ask the right questions upfront so your setup is personalized — not generic — from the start.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <div class="step-title">You Approve</div>
+                    <p class="step-desc">We give you an upfront quote before any work begins. No surprise charges, ever.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <div class="step-title">Ready to Go</div>
+                    <p class="step-desc">We don't leave until your device is fully set up and you feel confident using it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="section-label">// Ready to Get Started?</div>
+        <h2>Let's Set Up Your New Device</h2>
+        <p>Skip the frustration. We'll have your new device ready to use exactly the way you want it.</p>
+        <div class="cta-price">Starting at $69 · No hidden fees · Same-day options available</div>
+        <div class="hero-actions" style="margin-top: 24px;">
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="btn-primary" target="_blank">📅 Book a Service</a>
+            <a href="index.html#contact" class="btn-secondary">📞 Call / Text Us</a>
+        </div>
+        <div class="cta-contact">
+            <div>📞 <span>(646) 504-1617</span></div>
+            <div>📧 <span>info@metrotechworks.com</span></div>
+            <div>📍 <span>North NJ / NYC Metro</span></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Metro Tech Works. All rights reserved. &nbsp;|&nbsp; <a href="index.html">Back to Home</a></p>
+        <p style="margin-top:8px;">Service Area: North Jersey, NYC Metro, Bergen, Hudson, Essex, Passaic, Union, and Nearby Counties</p>
+    </footer>
+
+</body>
+</html>

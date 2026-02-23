@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Network & Wi-Fi | Metro Tech Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e8eaf0;
+            font-family: 'Exo 2', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: #000;
+            border-bottom: 1px solid #1a1a2e;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+            position: sticky;
+            top: 2px;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 6px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-logo span { color: #3b82f6; }
+
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+
+        .nav-links a {
+            color: #aab4cc;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Exo 2', sans-serif;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #60a5fa; }
+
+        .nav-cta {
+            background: #3b82f6;
+            color: #fff !important;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: #2563eb !important; color: #fff !important; }
+
+        /* ── HERO ── */
+        .hero {
+            background: #000;
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #1c1c2e;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,0.13) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .breadcrumb {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .breadcrumb a { color: #3b82f6; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: #444; margin: 0 8px; }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(59,130,246,0.12);
+            border: 1px solid rgba(59,130,246,0.35);
+            color: #60a5fa;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span { color: #3b82f6; }
+
+        .hero p {
+            max-width: 580px;
+            margin: 0 auto 32px;
+            color: #8899bb;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+
+        .btn-secondary {
+            background: transparent;
+            color: #60a5fa;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            border: 1px solid #3b82f6;
+            transition: background 0.2s, color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover { background: rgba(59,130,246,0.12); }
+
+        /* ── PRICING STRIP ── */
+        .pricing-strip {
+            background: linear-gradient(90deg, #0f1a2e, #111827, #0f1a2e);
+            border-top: 1px solid #1e3a5f;
+            border-bottom: 1px solid #1e3a5f;
+            padding: 18px 24px;
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: #60a5fa;
+            letter-spacing: 2px;
+        }
+
+        .pricing-strip strong { color: #fff; }
+
+        /* ── SERVICES SECTION ── */
+        .services-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 54px;
+        }
+
+        .section-label {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            color: #3b82f6;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            color: #7a8ba8;
+            max-width: 520px;
+            margin: 0 auto;
+            font-size: 0.97rem;
+        }
+
+        /* ── SERVICE CARDS GRID ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 22px;
+        }
+
+        .service-card {
+            background: #0f0f14;
+            border: 1px solid #1e2236;
+            border-radius: 10px;
+            padding: 28px 26px;
+            transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #2a4a7f;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(59,130,246,0.1);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #e0eaff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-desc {
+            color: #7a8ba8;
+            font-size: 0.93rem;
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+
+        .card-details {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+
+        .card-details li {
+            color: #8fa8c8;
+            font-size: 0.88rem;
+            padding: 5px 0;
+            padding-left: 16px;
+            position: relative;
+            border-bottom: 1px solid #141826;
+        }
+
+        .card-details li:last-child { border-bottom: none; }
+
+        .card-details li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: rgba(59,130,246,0.1);
+            border: 1px solid rgba(59,130,246,0.25);
+            color: #60a5fa;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-family: 'Roboto Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        /* ── FEATURED WIDE CARD ── */
+        .service-card.wide {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        @media (max-width: 700px) {
+            .service-card.wide { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+
+        /* ── PROCESS SECTION ── */
+        .process-section {
+            background: #050508;
+            border-top: 1px solid #1a1a2e;
+            border-bottom: 1px solid #1a1a2e;
+            padding: 70px 24px;
+        }
+
+        .process-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0;
+            margin-top: 48px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2563eb, transparent);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: #0f1827;
+            border: 2px solid #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #60a5fa;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-title {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            font-size: 0.92rem;
+            letter-spacing: 1px;
+            color: #c8d8f0;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 0.82rem;
+            color: #556070;
+            line-height: 1.5;
+        }
+
+        /* ── BOTTOM CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, #0a1628 0%, #0f0f1a 50%, #0a1628 100%);
+            border-top: 1px solid #1e3a5f;
+            padding: 70px 24px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p { color: #7a8ba8; margin-bottom: 32px; font-size: 1rem; }
+
+        .cta-price {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            color: #3b82f6;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .cta-contact {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 28px;
+            font-size: 0.88rem;
+            color: #556070;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .cta-contact span { color: #60a5fa; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #000;
+            border-top: 1px solid #111;
+            padding: 30px 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #444;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        footer a { color: #3b82f6; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge, .hero h1, .hero p, .hero-actions {
+            animation: fadeUp 0.6s ease both;
+        }
+        .hero h1 { animation-delay: 0.1s; }
+        .hero p { animation-delay: 0.2s; }
+        .hero-actions { animation-delay: 0.3s; }
+
+        .service-card { animation: fadeUp 0.5s ease both; }
+        .service-card:nth-child(1) { animation-delay: 0.05s; }
+        .service-card:nth-child(2) { animation-delay: 0.1s; }
+        .service-card:nth-child(3) { animation-delay: 0.15s; }
+        .service-card:nth-child(4) { animation-delay: 0.2s; }
+        .service-card:nth-child(5) { animation-delay: 0.25s; }
+        .service-card:nth-child(6) { animation-delay: 0.3s; }
+        .service-card:nth-child(7) { animation-delay: 0.35s; }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">METRO<span>TECH</span>WORKS</a>
+        <div class="nav-links">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#our-mission">Mission</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="nav-cta" target="_blank">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <p class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="index.html#services">Our Services</a>
+            <span>›</span>
+            Network &amp; Wi-Fi
+        </p>
+        <div class="hero-badge">📡 Network Services</div>
+        <h1>Network <span>&amp; Wi-Fi</span></h1>
+        <p>Slow speeds, dead zones, devices that won't connect — we diagnose and fix home and small business network issues fast, and build setups that are reliable from day one.</p>
+        <div class="hero-actions">
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="btn-primary" target="_blank">📅 Book a Service</a>
+            <a href="index.html#contact" class="btn-secondary">📞 Call / Text Us</a>
+        </div>
+    </header>
+
+    <!-- PRICING STRIP -->
+    <div class="pricing-strip">
+        <strong>Starting at $99</strong> &nbsp;·&nbsp; On-Site Service &nbsp;·&nbsp; North NJ / NYC Metro &nbsp;·&nbsp; Same-Day Available
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services-section">
+        <div class="section-header">
+            <div class="section-label">// What We Cover</div>
+            <h2>All Network &amp; Wi-Fi Services</h2>
+            <p>Every networking service we offer — explained clearly so you know exactly what you're getting.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <!-- WIDE: Router & Mesh Setup -->
+            <div class="service-card wide">
+                <div>
+                    <span class="card-icon">📡</span>
+                    <div class="card-title">Router & Mesh Network Setup</div>
+                    <p class="card-desc">A properly configured router is the foundation of a fast, reliable home network. Whether you're setting up a brand-new router or upgrading to a whole-home mesh system, we handle full installation, optimal placement, and security configuration so you get the best signal throughout your space.</p>
+                    <span class="card-tag">Most Popular</span>
+                </div>
+                <div>
+                    <ul class="card-details">
+                        <li>New router unboxing, setup &amp; configuration</li>
+                        <li>Mesh system setup (Eero, Orbi, Google Nest, etc.)</li>
+                        <li>Optimal router &amp; node placement guidance</li>
+                        <li>ISP modem &amp; router pairing</li>
+                        <li>Dual-band &amp; tri-band configuration</li>
+                        <li>Network naming, password &amp; security setup</li>
+                        <li>Port forwarding &amp; advanced settings as needed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Dead Zone Fixes -->
+            <div class="service-card">
+                <span class="card-icon">📶</span>
+                <div class="card-title">Dead Zone Diagnosis & Fixes</div>
+                <p class="card-desc">If certain rooms in your home have weak or no Wi-Fi signal, the fix isn't always a new router — it's knowing where the signal breaks down and why. We identify the root cause and apply the right solution.</p>
+                <ul class="card-details">
+                    <li>Room-by-room signal strength survey</li>
+                    <li>Interference source identification</li>
+                    <li>Wi-Fi extender or access point placement</li>
+                    <li>Mesh node addition &amp; positioning</li>
+                    <li>Channel &amp; frequency band optimization</li>
+                    <li>Powerline adapter setup where applicable</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Slow Internet Troubleshooting -->
+            <div class="service-card">
+                <span class="card-icon">🐢</span>
+                <div class="card-title">Slow Internet Troubleshooting</div>
+                <p class="card-desc">Slow internet isn't always your ISP's fault. We run a full diagnostic to pinpoint whether the issue is your router, your devices, your network configuration, or your provider — and fix what we can on the spot.</p>
+                <ul class="card-details">
+                    <li>Speed test at modem, router &amp; device level</li>
+                    <li>Router firmware update &amp; reboot optimization</li>
+                    <li>Bandwidth hog identification &amp; management</li>
+                    <li>QoS (Quality of Service) configuration</li>
+                    <li>DNS server optimization for faster browsing</li>
+                    <li>ISP issue documentation &amp; escalation guidance</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Network Security -->
+            <div class="service-card">
+                <span class="card-icon">🔐</span>
+                <div class="card-title">Network Security Setup</div>
+                <p class="card-desc">An unsecured network is an open invitation. We lock down your router and network settings so only your devices can connect — and unknown visitors stay out.</p>
+                <ul class="card-details">
+                    <li>Router admin password &amp; login hardening</li>
+                    <li>WPA3 / WPA2 encryption enforcement</li>
+                    <li>Guest network creation &amp; isolation</li>
+                    <li>MAC address filtering where appropriate</li>
+                    <li>Unknown device detection &amp; removal</li>
+                    <li>Router firmware security patch &amp; update</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Wired Network Setup -->
+            <div class="service-card">
+                <span class="card-icon">🔌</span>
+                <div class="card-title">Wired Network & Ethernet Setup</div>
+                <p class="card-desc">For the fastest and most stable connection — especially for gaming, streaming, or working from home — a wired Ethernet connection beats Wi-Fi every time. We set up switches, run cables, and configure your wired network cleanly.</p>
+                <ul class="card-details">
+                    <li>Network switch setup &amp; configuration</li>
+                    <li>Ethernet cable connection &amp; testing</li>
+                    <li>Desktop, smart TV &amp; console wired hookup</li>
+                    <li>Network switch &amp; hub installation</li>
+                    <li>Mixed wired/wireless network integration</li>
+                    <li>Cable management &amp; clean routing guidance</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Device Connectivity Issues -->
+            <div class="service-card">
+                <span class="card-icon">🖥️</span>
+                <div class="card-title">Device Connectivity Troubleshooting</div>
+                <p class="card-desc">When a specific device won't connect, keeps dropping, or has trouble staying on the network, the problem is often more nuanced than just "bad Wi-Fi." We track it down and fix it.</p>
+                <ul class="card-details">
+                    <li>Single device Wi-Fi drop &amp; reconnect issues</li>
+                    <li>IP address conflict resolution</li>
+                    <li>Network adapter driver &amp; settings fixes</li>
+                    <li>Smart TV, console &amp; streaming box connectivity</li>
+                    <li>Printer &amp; peripheral network connection</li>
+                    <li>VPN conflict &amp; split-tunnel troubleshooting</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+            <!-- ISP Modem Setup -->
+            <div class="service-card">
+                <span class="card-icon">🏢</span>
+                <div class="card-title">ISP Modem & Gateway Setup</div>
+                <p class="card-desc">Just got new service from your ISP or switched providers? We take care of the modem or gateway setup, make sure it's talking properly to your router, and verify everything is running at the speeds you're paying for.</p>
+                <ul class="card-details">
+                    <li>ISP modem activation &amp; configuration</li>
+                    <li>Modem/router combo (gateway) setup</li>
+                    <li>Bridge mode configuration for separate router use</li>
+                    <li>Provider switch setup (Xfinity, Verizon, Optimum, etc.)</li>
+                    <li>Speed verification against subscribed plan</li>
+                    <li>Coax, fiber &amp; cable connection testing</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Network Troubleshooting -->
+            <div class="service-card">
+                <span class="card-icon">🔧</span>
+                <div class="card-title">General Network Troubleshooting</div>
+                <p class="card-desc">Something's off with your network but you can't quite put your finger on it — intermittent drops, random slowdowns, devices not seeing each other. We dig in and figure it out.</p>
+                <ul class="card-details">
+                    <li>Intermittent connection drop diagnosis</li>
+                    <li>Local network device discovery issues</li>
+                    <li>File &amp; printer sharing between devices</li>
+                    <li>DNS &amp; IP configuration errors</li>
+                    <li>Network reset &amp; clean reconfiguration</li>
+                    <li>Whole-home network audit &amp; optimization</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="process-section">
+        <div class="process-inner">
+            <div class="section-header">
+                <div class="section-label">// The Process</div>
+                <h2>How It Works</h2>
+                <p>Simple, transparent, and stress-free from start to finish.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <div class="step-title">Book Online</div>
+                    <p class="step-desc">Schedule in minutes via our online booking or give us a call. Same-day options available.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <div class="step-title">We Diagnose</div>
+                    <p class="step-desc">We run a full network assessment on-site to find exactly where the problem lives — no guesswork.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <div class="step-title">You Approve</div>
+                    <p class="step-desc">We give you an upfront quote before any work begins. No surprise charges, ever.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <div class="step-title">Fully Connected</div>
+                    <p class="step-desc">We don't leave until every device is connected, speeds are verified, and your network is solid.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="section-label">// Ready to Get Connected?</div>
+        <h2>Fix Your Network Today</h2>
+        <p>Stop fighting with your Wi-Fi. We'll get your network fast, stable, and secure.</p>
+        <div class="cta-price">Starting at $99 · No hidden fees · Same-day options available</div>
+        <div class="hero-actions" style="margin-top: 24px;">
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="btn-primary" target="_blank">📅 Book a Service</a>
+            <a href="index.html#contact" class="btn-secondary">📞 Call / Text Us</a>
+        </div>
+        <div class="cta-contact">
+            <div>📞 <span>(646) 504-1617</span></div>
+            <div>📧 <span>info@metrotechworks.com</span></div>
+            <div>📍 <span>North NJ / NYC Metro</span></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Metro Tech Works. All rights reserved. &nbsp;|&nbsp; <a href="index.html">Back to Home</a></p>
+        <p style="margin-top:8px;">Service Area: North Jersey, NYC Metro, Bergen, Hudson, Essex, Passaic, Union, and Nearby Counties</p>
+    </footer>
+
+</body>
+</html>

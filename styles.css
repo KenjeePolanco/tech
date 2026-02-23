@@ -1,3 +1,21 @@
+/* Service page button styling */
+.service-btn {
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 22px;
+    font-size: 1.1em;
+    cursor: pointer;
+    font-family: 'Exo 2', sans-serif;
+    margin-bottom: 18px;
+    display: inline-block;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+.service-btn:hover {
+    background: #81a8fa;
+}
 /* Footer links styling for visibility */
 .footer-links {
     margin-top: 10px;

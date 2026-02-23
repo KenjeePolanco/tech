@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Tech Support | Metro Tech Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e8eaf0;
+            font-family: 'Exo 2', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: #000;
+            border-bottom: 1px solid #1a1a2e;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+            position: sticky;
+            top: 2px;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 6px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-logo span { color: #3b82f6; }
+
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+
+        .nav-links a {
+            color: #aab4cc;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Exo 2', sans-serif;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #60a5fa; }
+
+        .nav-cta {
+            background: #3b82f6;
+            color: #fff !important;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: #2563eb !important; color: #fff !important; }
+
+        /* ── HERO ── */
+        .hero {
+            background: #000;
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #1c1c2e;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,0.13) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .breadcrumb {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .breadcrumb a { color: #3b82f6; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: #444; margin: 0 8px; }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(59,130,246,0.12);
+            border: 1px solid rgba(59,130,246,0.35);
+            color: #60a5fa;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span { color: #3b82f6; }
+
+        .hero p {
+            max-width: 580px;
+            margin: 0 auto 32px;
+            color: #8899bb;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+
+        .btn-secondary {
+            background: transparent;
+            color: #60a5fa;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            border: 1px solid #3b82f6;
+            transition: background 0.2s, color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover { background: rgba(59,130,246,0.12); }
+
+        /* ── PRICING STRIP ── */
+        .pricing-strip {
+            background: linear-gradient(90deg, #0f1a2e, #111827, #0f1a2e);
+            border-top: 1px solid #1e3a5f;
+            border-bottom: 1px solid #1e3a5f;
+            padding: 18px 24px;
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: #60a5fa;
+            letter-spacing: 2px;
+        }
+
+        .pricing-strip strong { color: #fff; }
+
+        /* ── SERVICES SECTION ── */
+        .services-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 54px;
+        }
+
+        .section-label {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            color: #3b82f6;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            color: #7a8ba8;
+            max-width: 520px;
+            margin: 0 auto;
+            font-size: 0.97rem;
+        }
+
+        /* ── SERVICE CARDS GRID ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 22px;
+        }
+
+        .service-card {
+            background: #0f0f14;
+            border: 1px solid #1e2236;
+            border-radius: 10px;
+            padding: 28px 26px;
+            transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #2a4a7f;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(59,130,246,0.1);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #e0eaff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-desc {
+            color: #7a8ba8;
+            font-size: 0.93rem;
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+
+        .card-details {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+
+        .card-details li {
+            color: #8fa8c8;
+            font-size: 0.88rem;
+            padding: 5px 0;
+            padding-left: 16px;
+            position: relative;
+            border-bottom: 1px solid #141826;
+        }
+
+        .card-details li:last-child { border-bottom: none; }
+
+        .card-details li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: rgba(59,130,246,0.1);
+            border: 1px solid rgba(59,130,246,0.25);
+            color: #60a5fa;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-family: 'Roboto Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        /* ── FEATURED WIDE CARD ── */
+        .service-card.wide {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        @media (max-width: 700px) {
+            .service-card.wide { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+
+        /* ── PROCESS SECTION ── */
+        .process-section {
+            background: #050508;
+            border-top: 1px solid #1a1a2e;
+            border-bottom: 1px solid #1a1a2e;
+            padding: 70px 24px;
+        }
+
+        .process-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0;
+            margin-top: 48px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2563eb, transparent);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: #0f1827;
+            border: 2px solid #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #60a5fa;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-title {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            font-size: 0.92rem;
+            letter-spacing: 1px;
+            color: #c8d8f0;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 0.82rem;
+            color: #556070;
+            line-height: 1.5;
+        }
+
+        /* ── BOTTOM CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, #0a1628 0%, #0f0f1a 50%, #0a1628 100%);
+            border-top: 1px solid #1e3a5f;
+            padding: 70px 24px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p { color: #7a8ba8; margin-bottom: 32px; font-size: 1rem; }
+
+        .cta-price {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            color: #3b82f6;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .cta-contact {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 28px;
+            font-size: 0.88rem;
+            color: #556070;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .cta-contact span { color: #60a5fa; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #000;
+            border-top: 1px solid #111;
+            padding: 30px 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #444;
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        footer a { color: #3b82f6; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge, .hero h1, .hero p, .hero-actions {
+            animation: fadeUp 0.6s ease both;
+        }
+        .hero h1 { animation-delay: 0.1s; }
+        .hero p { animation-delay: 0.2s; }
+        .hero-actions { animation-delay: 0.3s; }
+
+        .service-card {
+            animation: fadeUp 0.5s ease both;
+        }
+        .service-card:nth-child(1) { animation-delay: 0.05s; }
+        .service-card:nth-child(2) { animation-delay: 0.1s; }
+        .service-card:nth-child(3) { animation-delay: 0.15s; }
+        .service-card:nth-child(4) { animation-delay: 0.2s; }
+        .service-card:nth-child(5) { animation-delay: 0.25s; }
+        .service-card:nth-child(6) { animation-delay: 0.3s; }
+        .service-card:nth-child(7) { animation-delay: 0.35s; }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">METRO<span>TECH</span>WORKS</a>
+        <div class="nav-links">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#our-mission">Mission</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="nav-cta" target="_blank">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <p class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="index.html#services">Our Services</a>
+            <span>›</span>
+            Home Tech Support
+        </p>
+        <div class="hero-badge">🏠 Residential Services</div>
+        <h1>Home Tech <span>Support</span></h1>
+        <p>Fast, friendly, and reliable technology help for your home — from slow computers to Wi-Fi headaches. We fix it right the first time.</p>
+        <div class="hero-actions">
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="btn-primary" target="_blank">📅 Book a Service</a>
+            <a href="index.html#contact" class="btn-secondary">📞 Call / Text Us</a>
+        </div>
+    </header>
+
+    <!-- PRICING STRIP -->
+    <div class="pricing-strip">
+        <strong>Starting at $79</strong> &nbsp;·&nbsp; On-Site &amp; Remote Options &nbsp;·&nbsp; North NJ / NYC Metro &nbsp;·&nbsp; Same-Day Available
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services-section">
+        <div class="section-header">
+            <div class="section-label">// What We Cover</div>
+            <h2>All Home Tech Support Services</h2>
+            <p>Every service we offer under Home Tech Support — explained clearly, no jargon.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <!-- WIDE: PC Troubleshooting -->
+            <div class="service-card wide">
+                <div>
+                    <span class="card-icon">💻</span>
+                    <div class="card-title">PC & Computer Troubleshooting</div>
+                    <p class="card-desc">Is your computer running sluggishly, freezing up, or crashing out of nowhere? We diagnose and resolve the root cause — not just a temporary patch — so your machine runs like it should again.</p>
+                    <span class="card-tag">Most Popular</span>
+                </div>
+                <div>
+                    <ul class="card-details">
+                        <li>Slow startup & sluggish performance diagnosis</li>
+                        <li>Blue screen of death (BSOD) &amp; crash analysis</li>
+                        <li>Overheating issues &amp; fan/cooling checks</li>
+                        <li>Software conflicts &amp; driver problems</li>
+                        <li>Disk health checks &amp; storage optimization</li>
+                        <li>Windows &amp; macOS troubleshooting</li>
+                        <li>Startup program management &amp; tune-up</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Wi-Fi & Networking -->
+            <div class="service-card">
+                <span class="card-icon">📶</span>
+                <div class="card-title">Wi-Fi & Network Setup / Fixes</div>
+                <p class="card-desc">Dropped connections, dead zones, or a brand-new router that needs configuration — we handle all home networking needs quickly and cleanly.</p>
+                <ul class="card-details">
+                    <li>Router setup &amp; optimal placement guidance</li>
+                    <li>Wi-Fi dead zone diagnosis &amp; fixes</li>
+                    <li>Password reset &amp; network security setup</li>
+                    <li>Connecting smart TVs, consoles &amp; devices</li>
+                    <li>Mesh network &amp; Wi-Fi extender setup</li>
+                    <li>Slow internet speed troubleshooting</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Printer Setup -->
+            <div class="service-card">
+                <span class="card-icon">🖨️</span>
+                <div class="card-title">Printer Setup & Troubleshooting</div>
+                <p class="card-desc">Printers are notorious for being stubborn. We'll get yours connected, configured, and printing properly — wired or wireless.</p>
+                <ul class="card-details">
+                    <li>New printer installation &amp; driver setup</li>
+                    <li>Wireless &amp; network printer configuration</li>
+                    <li>Print queue errors &amp; spooler fixes</li>
+                    <li>Scanning &amp; fax feature setup</li>
+                    <li>Multi-device printer sharing setup</li>
+                    <li>Mac &amp; Windows compatibility issues</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+            <!-- Virus & Malware Removal -->
+            <div class="service-card">
+                <span class="card-icon">🛡️</span>
+                <div class="card-title">Virus & Malware Removal</div>
+                <p class="card-desc">Pop-ups, redirects, unexplained slowdowns — these are common signs of infection. We clean your system thoroughly and harden it against future threats.</p>
+                <ul class="card-details">
+                    <li>Full system malware &amp; virus scan</li>
+                    <li>Spyware, adware &amp; ransomware removal</li>
+                    <li>Browser hijack cleanup &amp; reset</li>
+                    <li>Antivirus software installation &amp; setup</li>
+                    <li>Post-removal system health check</li>
+                    <li>Prevention tips &amp; security hardening</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+            <!-- Device Setup & Tune-Ups -->
+            <div class="service-card">
+                <span class="card-icon">⚙️</span>
+                <div class="card-title">Device Setup & System Tune-Ups</div>
+                <p class="card-desc">Got a new device or just feel like yours has gotten slower over time? We'll get it set up exactly how you want it, or breathe new life into your existing machine.</p>
+                <ul class="card-details">
+                    <li>New PC, Mac, or laptop initial setup</li>
+                    <li>Account creation &amp; preference configuration</li>
+                    <li>Essential software installation</li>
+                    <li>System cleanup &amp; junk file removal</li>
+                    <li>Updates, patches &amp; driver installs</li>
+                    <li>Performance optimization settings</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+            <!-- Data Transfer & Backup -->
+            <div class="service-card">
+                <span class="card-icon">💾</span>
+                <div class="card-title">Data Transfer & Backup Setup</div>
+                <p class="card-desc">Whether you're upgrading to a new machine or just want peace of mind, we'll move your files safely and set up a reliable backup system you don't have to think about.</p>
+                <ul class="card-details">
+                    <li>File &amp; profile transfer to new computer</li>
+                    <li>External hard drive &amp; cloud backup setup</li>
+                    <li>Google Drive, OneDrive &amp; iCloud configuration</li>
+                    <li>Backup schedule &amp; automation setup</li>
+                    <li>Data recovery from failing drives</li>
+                    <li>Old-to-new machine migration</li>
+                </ul>
+                <span class="card-tag">On-Site</span>
+            </div>
+
+            <!-- Email & Account Help -->
+            <div class="service-card">
+                <span class="card-icon">📧</span>
+                <div class="card-title">Email & Account Troubleshooting</div>
+                <p class="card-desc">Locked out of your account, email not syncing, or setting up a new email client? We resolve it fast and clearly walk you through what happened.</p>
+                <ul class="card-details">
+                    <li>Email client setup (Outlook, Gmail, Apple Mail)</li>
+                    <li>Account lockout &amp; password recovery</li>
+                    <li>Email sync issues across devices</li>
+                    <li>Two-factor authentication (2FA) setup</li>
+                    <li>Spam filter &amp; junk mail configuration</li>
+                    <li>New account creation &amp; organization</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+            <!-- Software & App Support -->
+            <div class="service-card">
+                <span class="card-icon">📦</span>
+                <div class="card-title">Software Installation & App Support</div>
+                <p class="card-desc">Can't get a program to install, keep getting error messages, or need help learning a new application? We handle it — and explain it in plain language.</p>
+                <ul class="card-details">
+                    <li>Software installation &amp; activation</li>
+                    <li>Error message diagnosis &amp; resolution</li>
+                    <li>App crashes &amp; compatibility fixes</li>
+                    <li>Microsoft Office / 365 setup &amp; issues</li>
+                    <li>License key &amp; subscription management</li>
+                    <li>Uninstalling problematic or unwanted programs</li>
+                </ul>
+                <span class="card-tag">Remote / On-Site</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="process-section">
+        <div class="process-inner">
+            <div class="section-header">
+                <div class="section-label">// The Process</div>
+                <h2>How It Works</h2>
+                <p>Simple, transparent, and stress-free from start to finish.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <div class="step-title">Book Online</div>
+                    <p class="step-desc">Schedule in minutes via our online booking or give us a call. Same-day options available.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <div class="step-title">We Diagnose</div>
+                    <p class="step-desc">Our tech identifies the issue remotely or on-site and explains it clearly — no jargon.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <div class="step-title">You Approve</div>
+                    <p class="step-desc">We give you an upfront quote before any work begins. No surprise charges, ever.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <div class="step-title">Issue Resolved</div>
+                    <p class="step-desc">We fix it right the first time and don't leave until you're fully confident in the result.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="section-label">// Ready to Get Started?</div>
+        <h2>Let's Fix Your Tech Today</h2>
+        <p>Fast response. Transparent pricing. Real technicians who care.</p>
+        <div class="cta-price">Starting at $79 · No hidden fees · Same-day options available</div>
+        <div class="hero-actions" style="margin-top: 24px;">
+            <a href="https://app.acuityscheduling.com/schedule.php?owner=38458633" class="btn-primary" target="_blank">📅 Book a Service</a>
+            <a href="index.html#contact" class="btn-secondary">📞 Call / Text Us</a>
+        </div>
+        <div class="cta-contact">
+            <div>📞 <span>(646) 504-1617</span></div>
+            <div>📧 <span>info@metrotechworks.com</span></div>
+            <div>📍 <span>North NJ / NYC Metro</span></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Metro Tech Works. All rights reserved. &nbsp;|&nbsp; <a href="index.html">Back to Home</a></p>
+        <p style="margin-top:8px;">Service Area: North Jersey, NYC Metro, Bergen, Hudson, Essex, Passaic, Union, and Nearby Counties</p>
+    </footer>
+
+</body>
+</html>
