@@ -1,3 +1,21 @@
+/* Footer links styling for visibility */
+.footer-links {
+    margin-top: 10px;
+    font-size: 1.15em;
+    font-weight: bold;
+}
+.footer-links a {
+    color: #81a8fa;
+    text-decoration: underline;
+    margin-right: 18px;
+    transition: color 0.2s;
+}
+.footer-links a:last-child {
+    margin-right: 0;
+}
+.footer-links a:hover {
+    color: #3b82f6;
+}
 /* Faint background logo for Mission section */
 .mission-bg {
     background: url('photos/FullLogo_Transparent_NoBuffer.png') center center no-repeat;
