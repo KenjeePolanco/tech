@@ -7,8 +7,8 @@
     <!-- Google Fonts for tech-style examples -->
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@400;700&family=IBM+Plex+Mono&family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- Font Awesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Feather Icons CDN -->
+    <script src="https://unpkg.com/feather-icons"></script>
     <!-- Begin Brevo Form -->
     <style>  @font-face {    font-display: block;    font-family: Roboto;    src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")  }  @font-face {    font-display: fallback;    font-family: Roboto;    font-weight: 600;    src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")  }  @font-face {    font-display: fallback;    font-family: Roboto;    font-weight: 700;    src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")  }  #sib-container input:-ms-input-placeholder {    text-align: left;    font-family: Helvetica, sans-serif;    color: #c0ccda;  }  #sib-container input::placeholder {    text-align: left;    font-family: Helvetica, sans-serif;    color: #c0ccda;  }  #sib-container textarea::placeholder {    text-align: left;    font-family: Helvetica, sans-serif;    color: #c0ccda;  }  #sib-container a {    text-decoration: underline;    color: #2BB2FC;  }</style>
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
@@ -32,11 +32,11 @@
           <span class="label"></span>          
             </button>
             <div class="dropdown-content">
-                <a href="#services"><span style="margin-right:8px;">🛠️</span>Services & Pricing</a>
-                <a href="#our-mission"><span style="margin-right:8px;">🎯</span>Our Mission</a>
-                <a href="#why-choose-us"><span style="margin-right:8px;">🌟</span>Why Choose Us</a>
-                <a href="#faq"><span style="margin-right:8px;">❓</span>FAQ</a>
-                <a href="#contact"><span style="margin-right:8px;">📞</span>Contact</a>
+                <a href="#services"><i data-feather="tool" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Services & Pricing</a>
+                <a href="#our-mission"><i data-feather="target" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Our Mission</a>
+                <a href="#why-choose-us"><i data-feather="star" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Why Choose Us</a>
+                <a href="#faq"><i data-feather="help-circle" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>FAQ</a>
+                <a href="#contact"><i data-feather="phone" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Contact</a>
             </div>
         </div>
         <h1>Metro Tech Works</h1>
@@ -84,8 +84,19 @@
 
         <section id="hero" style="max-width: 900px; margin: 48px auto 0 auto; padding: 48px 24px 32px 24px; background: #eaf4ff; border-radius: 16px; box-shadow: 0 4px 24px rgba(81,168,250,0.10); font-family: 'Exo 2', sans-serif; text-align: center; position:relative; overflow:hidden;">
             <h1 style="font-size: 2.4em; color: #1a3a6b; margin-bottom: 0; letter-spacing: 2px; font-family: 'Exo 2', sans-serif;">
-                <span style="font-size: 1.15em; color: #17407b; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 10px;">Tech Support For Home & Small Businesses.</span>
-                Fast <span style="color:#fbbf24;">&#9733;</span> Friendly <span style="color:#fbbf24;">&#9733;</span> Reliable
+                <span style="font-size: 1.15em; color: #17407b; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 10px;">Tech Support For Home & Small Businesses</span>
+                                <span style="color:#fbbf24;">&#9733;</span> <span id="ffr-word" style="color:#1a3a6b; font-weight:700; transition:color 0.4s;">Fast</span> <span style="color:#fbbf24;">&#9733;</span>
+                                <script>
+                                    const words = ["Fast", "Friendly", "Reliable"];
+                                    let idx = 0;
+                                    setInterval(() => {
+                                        idx = (idx + 1) % words.length;
+                                        const el = document.getElementById("ffr-word");
+                                        if (el) {
+                                            el.textContent = words[idx];
+                                        }
+                                    }, 2000);
+                                </script>
             </h1>
             <div style="font-size: 1.25em; color: #333; margin-bottom: 28px;">On-site or Remote &bull; North NJ/NYC &bull; Same Day Options Available</div>
         <div style="display: flex; justify-content: center; gap: 18px; margin-bottom: 18px; flex-wrap: wrap;">
@@ -183,11 +194,11 @@
                 </p>
                 <h3 style="color: #1a3a6b; margin-top: 28px; margin-bottom: 12px; font-size: 1.25em; text-align:center; font-family: 'Exo 2', sans-serif;">Our Core Values</h3>
                 <ul class="core-values-list" style="color: #333; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; font-family: 'Exo 2', sans-serif; padding-left: 0; list-style-type: none;">
-                    <li><span style="font-size:1.5em; margin-right:8px;">🤝</span><strong>Integrity First</strong><br>We give honest recommendations and transparent pricing — no unnecessary services, no pressure tactics, and no hidden surprises.</li>
-                    <li><span style="font-size:1.5em; margin-right:8px;">💬</span><strong>Clear Communication</strong><br>We explain issues in plain language, not technical jargon, so you always understand what’s happening and why.</li>
-                    <li><span style="font-size:1.5em; margin-right:8px;">🎧</span><strong>Reliable Support</strong><br>When you reach out, you’re speaking directly with a real technician who stays with your issue until it’s fully resolved.</li>
-                    <li><span style="font-size:1.5em; margin-right:8px;">🔒</span><strong>Security & Privacy Focused</strong><br>Your data matters. We follow best practices to protect your devices, networks, and sensitive information.</li>
-                    <li style="grid-column: span 2; text-align:center;"><span style="font-size:1.5em; margin-right:8px;">🏢</span><strong>Community Commitment</strong><br>We proudly serve our local metro community with the same care and attention we’d give our own family’s technology.</li>
+                    <li><i data-feather="shield" style="width:1.5em;height:1.5em;vertical-align:middle;margin-right:8px;"></i><strong>Integrity First</strong><br>We give honest recommendations and transparent pricing — no unnecessary services, no pressure tactics, and no hidden surprises.</li>
+                    <li><i data-feather="message-circle" style="width:1.5em;height:1.5em;vertical-align:middle;margin-right:8px;"></i><strong>Clear Communication</strong><br>We explain issues in plain language, not technical jargon, so you always understand what’s happening and why.</li>
+                    <li><i data-feather="headphones" style="width:1.5em;height:1.5em;vertical-align:middle;margin-right:8px;"></i><strong>Reliable Support</strong><br>When you reach out, you’re speaking directly with a real technician who stays with your issue until it’s fully resolved.</li>
+                    <li><i data-feather="lock" style="width:1.5em;height:1.5em;vertical-align:middle;margin-right:8px;"></i><strong>Security & Privacy Focused</strong><br>Your data matters. We follow best practices to protect your devices, networks, and sensitive information.</li>
+                    <li style="grid-column: span 2; text-align:center;"><i data-feather="users" style="width:1.5em;height:1.5em;vertical-align:middle;margin-right:8px;"></i><strong>Community Commitment</strong><br>We proudly serve our local metro community with the same care and attention we’d give our own family’s technology.</li>
                 </ul>
         </section>
 
@@ -199,7 +210,7 @@
                         <img src="./photos/priority.jpg" alt="Technical Know-How" class="why-img-list">
                     </div>
                     <div>
-                        <span style="margin-right:8px;">💻</span>Your tech, our priority
+                        <i data-feather="monitor" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Your tech, our priority
                         <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
                             We treat your devices and systems like they're our own. Whether it's a slow computer, network issue, security concern, or full business setup, we respond quickly, communicate clearly, and stay with the problem until it's fully resolved. No passing you around. No generic ticket system runaround. Real answers from real technicians and support when you need it most.
                         </div>
@@ -210,7 +221,7 @@
                         <img src="./photos/team.jpg" alt="Expert, Friendly Technicians" class="why-img-list">
                     </div>
                     <div>
-                        <span style="margin-right:8px;">👨‍💻</span>Expert, friendly technicians
+                        <i data-feather="user-check" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Expert, friendly technicians
                         <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
                             Our team combines real technical knowledge with clear, down-to-earth communication. We don’t overwhelm you with confusing jargon — we explain issues in plain language and make sure you understand exactly what’s happening. Professional, respectful, and easy to work with — that’s how tech support should feel.
                         </div>
@@ -221,7 +232,7 @@
                         <img src="./photos/scheduling.jpg" alt="Fast Response and Scheduling" class="why-img-list">
                     </div>
                     <div>
-                        <span style="margin-right:8px;">⚡</span>Fast response and flexible scheduling
+                        <i data-feather="zap" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Fast response and flexible scheduling
                         <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
                             When something goes wrong, you shouldn’t have to wait in a support queue. We prioritize rapid response times and offer flexible appointment options — including evenings and weekends — so your day stays on track.
                         </div>
@@ -232,7 +243,7 @@
                         <img src="./photos/remotesupport.jpg" alt="Planning & Innovation" class="why-img-list">
                     </div>
                     <div>
-                        <span style="margin-right:8px;">🛠️</span>Onsite and remote support options
+                        <i data-feather="tool" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Onsite and remote support options
                         <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
                             We meet you where you are. From secure remote troubleshooting for quick fixes to hands-on on-site service for more complex issues, we provide flexible support designed around your needs — not ours.
                         </div>
@@ -243,7 +254,7 @@
                         <img src="./photos/pricing.jpg" alt="Transparent Fair Pricing" class="why-img-list">
                     </div>
                     <div>
-                        <span style="margin-right:8px;">💲</span>Transparent, fair pricing
+                        <i data-feather="dollar-sign" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Transparent, fair pricing
                         <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
                             Technology support shouldn’t come with confusing invoices or unexpected add-ons. We provide clear, upfront pricing and honest recommendations, so you know exactly what you’re paying for — and why.
                         </div>
@@ -254,7 +265,7 @@
                         <img src="./photos/data-privacy.jpg" alt="Data Security" class="why-img-list">
                     </div>
                     <div>
-                        <span style="margin-right:8px;">🔒</span>Commitment to data privacy and security
+                        <i data-feather="lock" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Commitment to data privacy and security
                         <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
                             Your information is handled with the highest level of care and discretion. We use secure tools, follow best practices, and access only what is necessary to resolve your issue. Your data stays private — always.
                         </div>
@@ -265,7 +276,7 @@
                         <img src="./photos/ongoing.jpg" alt="Ongoing IT Support" class="why-img-list">
                     </div>
                     <div>
-                        <span style="margin-right:8px;">🏢</span>Ongoing IT support for businesses
+                        <i data-feather="briefcase" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Ongoing IT support for businesses
                         <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
                             We partner with growing businesses to provide dependable, long-term IT support. Instead of waiting for problems to arise, we help maintain, monitor, and strengthen your systems — reducing downtime and improving productivity.
                         </div>
@@ -276,7 +287,7 @@
                         <img src="./photos/metro.jpg" alt="Local Reach" class="why-img-list">
                     </div>
                     <div>
-                        <span style="margin-right:8px;">📍</span>Serving a wide local area
+                        <i data-feather="map-pin" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>Serving a wide local area
                         <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
                             As a locally operated business, we’re committed to supporting our community with reliable, accessible technology services. We’re close enough to respond quickly — and invested enough to truly care about the people we serve.
                         </div>
@@ -287,7 +298,7 @@
                         <img src="./photos/care.jpg" alt="Customer Care" class="why-img-list">
                     </div>
                     <div>
-                        <span style="margin-right:8px;">🤝</span>We care about your satisfaction
+                        <i data-feather="heart" style="width:1.2em;height:1.2em;vertical-align:middle;margin-right:8px;"></i>We care about your satisfaction
                         <div style="font-size:0.98em; color:#444; margin-top:6px; font-weight:400;">
                             Our job isn’t finished until you feel confident in your technology. We take the time to ensure issues are fully resolved and that you understand the solution. Your experience matters to us — and we’re always here if you need follow-up support.
                         </div>
@@ -331,11 +342,12 @@
                             <h3 style="color: #ffb347; font-size: 1.5em; margin-bottom: 12px; letter-spacing: 2px;">Stay Connected!</h3>
                             <p style="color: #bfc8e6; font-size: 1.1em; margin-bottom: 18px;">@metrotechworks on all socials<br>Follow us for updates, tips, and support!</p>
                             <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
-                                <a href="https://www.facebook.com/profile.php?id=61588328501488" target="_blank" style="color: #4267B2; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="Facebook"><i class="fab fa-facebook-square"></i> Facebook</a>
-                                <a href="https://www.instagram.com/metrotechworks/" target="_blank" style="color: #E1306C; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
-                                <a href="https://x.com/metrotechworks" target="_blank" style="color: #1DA1F2; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="Twitter/X"><i class="fab fa-x-twitter"></i> Twitter/X</a>
-                                <a href="https://www.linkedin.com/company/metro-tech-works/?viewAsMember=true" target="_blank" style="color: #0077B5; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                                <a href="https://www.tiktok.com/@metrotechworks?lang=en" target="_blank" style="color: #010101; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="TikTok"><i class="fab fa-tiktok"></i> TikTok</a>
+                                <a href="https://www.facebook.com/profile.php?id=61588328501488" target="_blank" style="color: #4267B2; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="Facebook"><i data-feather="facebook"></i> Facebook</a>
+                                <a href="https://www.instagram.com/metrotechworks/" target="_blank" style="color: #E1306C; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="Instagram"><i data-feather="instagram"></i> Instagram</a>
+                                <a href="https://x.com/metrotechworks" target="_blank" style="color: #1DA1F2; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="Twitter/X"><i data-feather="twitter"></i> Twitter/X</a>
+                                <a href="https://www.linkedin.com/company/metro-tech-works/?viewAsMember=true" target="_blank" style="color: #0077B5; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="LinkedIn"><i data-feather="linkedin"></i> LinkedIn</a>
+                                <a href="https://www.tiktok.com/@metrotechworks?lang=en" target="_blank" style="color: #010101; font-size: 2em; text-decoration: none; display: flex; align-items: center; gap: 8px;" title="TikTok"><i data-feather="music"></i> TikTok</a>
+                                <script>feather.replace()</script>
                             </div>
                             <div style="margin-top: 18px; color: #8fa1c7; font-size: 1em;">Message us anytime with questions, tech issues, or partnership inquiries.</div>
                         </div>
