@@ -121,7 +121,7 @@ header {
 header h1 {
     font-family: 'Orbitron', sans-serif;
     margin: 0;
-    letter-spacing: 8px;
+    /* letter-spacing removed to prevent excessive spacing */
 }
 .dropdown {
     position: absolute;

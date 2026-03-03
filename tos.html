@@ -12,6 +12,18 @@
             margin: 0;
             padding: 0;
         }
+        /* Allow global body::after background image */
+        .policy-container {
+            background: #fff;
+            max-width: 700px;
+            margin: 48px auto 32px auto;
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(81,168,250,0.18), 0 1.5px 8px rgba(0,0,0,0.07);
+            padding: 48px 32px 36px 32px;
+        }
+        body::after {
+            opacity: 0.03 !important;
+        }
         .policy-container {
             background: #fff;
             max-width: 700px;
@@ -54,7 +66,6 @@
     <div class="policy-container">
         <div class="effective-date">Effective Date: February 22, 2026</div>
         <h1>Terms of Service</h1>
-        <a href="tos.html" style="background: #4a90e2; color: #fff; border: none; border-radius: 6px; padding: 10px 22px; font-size: 1.1em; cursor: pointer; font-family: 'Exo 2', sans-serif; margin-bottom: 18px; display: inline-block; text-decoration: none;">Back to Terms of Service</a>
         <ul>
             <li><strong>Service Agreement:</strong> By using Metro Tech Works services, you agree to our terms and conditions as outlined in our Service Agreement.</li>
             <li><strong>Scope of Services:</strong> We provide technology support, consulting, and related services as described on our website. Details and limitations are specified in your service quote or agreement.</li>
