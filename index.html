@@ -57,78 +57,72 @@
         /* ─────────────────────────────────────────
            TOP BAR (matches service pages)
         ───────────────────────────────────────── */
-        nav {
-            background: #000;
-            border-bottom: 1px solid #1a1a2e;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 28px;
-            position: sticky;
-            top: 2px;
-            z-index: 1000;
-            gap: 12px;
-        }
-
-        .nav-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.05rem;
-            letter-spacing: 6px;
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .nav-logo img { height: 36px; opacity: 0.92; }
-        .nav-logo span { color: #3b82f6; }
-
-        .nav-links { display: flex; gap: 22px; align-items: center; }
-        .nav-links a {
-            color: #aab4cc;
-            text-decoration: none;
-            font-size: 0.82rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-family: 'Exo 2', sans-serif;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: #60a5fa; }
-
-        .nav-actions { display: flex; gap: 10px; align-items: center; }
-
-        .nav-btn-primary {
-            background: #3b82f6;
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-family: 'Exo 2', sans-serif;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s;
-            display: inline-block;
-        }
-        .nav-btn-primary:hover { background: #2563eb; }
-
-        .nav-btn-outline {
-            background: transparent;
-            color: #60a5fa;
-            padding: 8px 20px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-family: 'Exo 2', sans-serif;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            border: 1px solid #3b82f6;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .nav-btn-outline:hover { background: rgba(59,130,246,0.12); }
-
+nav {
+    background: #000;
+    border-bottom: 1px solid #1a1a2e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    position: sticky;
+    top: 2px;
+    z-index: 1000;
+    gap: 12px;
+}
+.nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 6px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.nav-logo img { height: 36px; opacity: 0.92; }
+.nav-logo span { color: #3b82f6; }
+.nav-links { display: flex; gap: 22px; align-items: center; }
+.nav-links a {
+    color: #aab4cc;
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: 'Exo 2', sans-serif;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: #60a5fa; }
+.nav-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+.nav-btn-primary {
+    background: #3b82f6;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-family: 'Exo 2', sans-serif;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: inline-block;
+}
+.nav-btn-primary:hover { background: #2563eb; }
+.nav-btn-outline {
+    background: transparent;
+    color: #60a5fa;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-family: 'Exo 2', sans-serif;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    border: 1px solid #3b82f6;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.nav-btn-outline:hover { background: rgba(59,130,246,0.12); }
         /* ─────────────────────────────────────────
            HERO
         ───────────────────────────────────────── */
